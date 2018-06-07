@@ -1,0 +1,73 @@
+.divLoginOuter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    transition: all 0.5s ease-in;
+}
+
+.divLoginInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+    background: #f5f5f5;
+    padding: 30px;
+    padding-bottom: 10px;
+    min-width: 490px;
+}
+
+#loginLogo {
+    height: 64px;
+    width: 64px;
+    padding-bottom: 10px;
+}
+
+.loginField {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 8px;
+    margin: 10px;
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
+    border-radius: 30px;
+}
+
+.loginField .material-icons {
+    color: #292929;
+    padding: 4px;
+}
+
+.loginField input {
+    border: 0px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+a#btnLogin, a#btnLogin:visited, a#btnLogin:link  {
+    display: block;
+    box-sizing: border-box;
+    width: 120px;
+    height: 35px;
+    padding-top: 6px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    background: rgba(0,0,0,0.1);
+    margin: 15px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+a#btnLogin:hover, a#btnLogin:active {
+    background: rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+#errorMsg {
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+    margin: 5px;
+}

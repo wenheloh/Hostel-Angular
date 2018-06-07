@@ -1,0 +1,102 @@
+header {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: solid 1px #ddd;
+    background: #f5f5f5;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+#headerLeft {
+    float: left;
+    display: flex;
+    align-items: baseline;
+    outline: none;
+    cursor: pointer;
+}
+
+#headerLeft h3 {
+    display: inline;
+    padding-bottom: 0px;
+}
+
+#headerTime {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    bottom: -20px;
+}
+
+#hypManagePhoneNo, #hypManagePhoneNo:visited, #hypManagePhoneNo:link {
+    margin: auto;
+    display: block;
+    box-sizing: border-box;
+    width: 180px;
+    height: 35px;
+    padding-top: 6px;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    background: rgba(0,0,0,0.1);
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+#hypManagePhoneNo:hover, #hypManagePhoneNo:active {
+    background: rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+a#btnLogout, a#btnLogout:link, a#btnLogout:visited {
+    display: block;
+    width: 120px;
+    text-decoration: none;
+    color: red;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    padding-top: 25px;
+}
+
+a#btnLogout:hover, a#btnLogout:active {
+    text-decoration: underline;
+}
+
+footer {
+    width: 100%;
+    height: 30px;
+    padding: 10px 0px;
+    background: #f5f5f5;
+    border-top: solid 1px #ddd;
+    position: fixed;
+    bottom: 0px;
+}
+
+footer span {
+    float: right;
+    position: relative;
+    right: 20px;
+    top: 5px;
+}
+
+.material-icons.access_time {
+    position: relative;
+    top: 5px;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+#spanMin {
+    padding-right: 3px;
+}
+
+#spanSec {
+    padding-left: 3px;
+}

@@ -1,0 +1,19 @@
+<div>
+  <header>
+    <div routerLink="/dashboard" routerLinkActive="active" id="headerLeft" title="Dashboard">
+      <img id="logo" alt="Logo" title="design by Freepik from Flaticon" src="assets/img/siren.png">
+      <h3>Crowd Distress Admin System</h3>
+    </div>
+    <!--<div id="headerTime" style="display: flex; align-items: baseline;"><i class="material-icons access_time">access_time</i><span id="spanMin">{{ minutesLeft }}</span><span> : </span><span id="spanSec">{{ secondsLeft }}</span></div>-->
+    <a id="hypManagePhoneNo" (click)="openManagePhoneNoDialog()">Manage Phone No.</a>
+    <div id="headerRight">
+      <a id="btnLogout" title="Logout" (click)="logout()">Logout</a>
+    </div>
+  </header>
+  <div>
+
+  </div>
+  <footer>
+    <span>All Right Reserved © 2018</span>
+  </footer>
+</div>
