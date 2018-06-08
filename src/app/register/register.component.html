@@ -1,3 +1,35 @@
-<p>
-  register works!
-</p>
+<div class="divLoginOuter">
+    <div class="divLoginInner">
+        <img id="loginLogo" alt="Logo" src="http://www.utm.my/wp-content/uploads/2017/04/UTMlogo2017.png">   
+        
+        <p class="loginField"><input [(ngModel)]="userIdModel" type="text" name="userid" #userid placeholder="Enter username"></p>
+
+        <p class="loginField"><input [(ngModel)]="passwordModel" #password name="password" type="password" placeholder="Enter password"></p>
+
+        <p class="loginField"><input [(ngModel)]="cpasswordModel" #cpassword name="cpassword" type="password" placeholder="Confirm password"></p>
+<ul class="gender-list">
+        <li *ngFor="let gender of genders"
+  [class.selected]="gender == selectedGender"
+  (click)="onSelect(gender.valueOf())">{{genderString[gender]}}
+  
+</li>
+</ul>
+ <p class="loginField"><input [(ngModel)]="nameModel" pattern="[a-zA-Z ]*" #name name="contact" type="text" placeholder="Enter full name"></p>
+        <p class="loginField"><input [(ngModel)]="matricNoModel" #matric name="matricNo" type="text" placeholder="Enter matric no."></p>
+
+       
+
+        <p class="loginField"><input [(ngModel)]="contactModel"  #contact name="contact" type="text" placeholder="Enter contact no."></p>
+
+
+
+        <div class="errorMsg">
+            {{  staticErrorMsg }}
+        </div>
+        <p>
+        <a id="btnLogin" title="Register" (click)="validate()">Register</a> &nbsp; <a class="register" (click)="route('login')" >back to Login</a>
+    </p>
+       
+        <p style="margin-bottom: 5px;">All Right Reserved © 2018</p>
+    </div>
+</div>

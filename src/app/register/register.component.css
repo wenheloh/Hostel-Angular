@@ -1,0 +1,134 @@
+.divLoginOuter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*height: 100vh;*/
+    transition: all 0.5s ease-in;
+    background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');
+background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.divLoginInner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   /* box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);*/
+    background: #ffffffd1;
+    padding: 30px;
+    padding-bottom: 10px;
+    min-width: 250px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+#loginLogo {
+   width: 100%;
+}
+
+.loginTitle{
+    color:#710030;
+    font-family : arial;
+}
+
+
+.loginField {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 8px;
+    margin: 10px;
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
+    border-radius: 30px;
+    width: 60%;
+}
+
+.loginField .material-icons {
+    color: #292929;
+    padding: 4px;
+}
+
+.loginField input {
+    border: 0px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+a.register{
+    color: #4e0625;
+    text-decoration: underline;
+    
+}
+
+a#btnLogin, a#btnLogin:visited, a#btnLogin:link  {
+        display: inline;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* width: 120px; */
+    /* height: 35px; */
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    background: rgb(187, 6, 83);
+    margin: 15px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-family: arial;
+    font-weight: bold;
+}
+
+a#btnLogin:hover, a#btnLogin:active {
+    background: rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+.errorMsg {
+    font-size: medium;
+    color: red;
+    font-weight: bold;
+    font-family: arial;
+}
+
+ul.gender-list{
+    display:inline-block;
+    width: 80%;
+    padding-left: 0;
+        text-align: center;
+
+}
+.gender-list li{
+
+     list-style: none;
+    display: inline-block;
+    width: 40%;
+    border: solid 1px #bb0653;    
+    background: white;
+    color: #bb0653;
+    font-family: arial;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.gender-list li:first-child {
+    
+    border-right: 0px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+   
+}
+
+.gender-list li:last-child {  
+   
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;   
+}
+
+.gender-list li.selected{
+    background: #bb0653;
+    color: white;
+}

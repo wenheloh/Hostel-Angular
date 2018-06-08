@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
 
 @Component({
   templateUrl: './login.component.html',
@@ -18,50 +19,71 @@ export class LoginComponent implements OnInit {
     return LoginComponent.errorMsg;
   }
 
+  set staticErrorMsg(msg) {
+    LoginComponent.errorMsg = msg;
+  }
+
   constructor(
       //private auth: AuthService,
       private router: Router,
-    ) {
-        LoginComponent.errorMsg = "";
+      private http:HttpClient,
+      ) {
+    LoginComponent.errorMsg = "";
         //this.auth.logout();
-    }
+      }
 
-  ngOnInit() {
-  }  
+      ngOnInit() {
+      }  
 
-  login() {       
-     this.title = `${this.userIdModel} 
-                ${this.passwordModel}`;
-    /*
-    this.auth.loginWithEmail(this.txtUserId.nativeElement.value, this.txtPassword.nativeElement.value).then(function(){
-        LoginComponent.errorMsg = "";
-        localStorage.setItem("uid","1234")
-        let element: HTMLElement = document.getElementById('route');
-        element.click();
-    }).catch(function(error) {
-        switch(error.code) {
-            case "auth/invalid-email":
-                LoginComponent.errorMsg = "Email is invalid";
-                break;
+      login() {  
+      if( this.userIdModel == "" || this.passwordModel == ""){
+        this.staticErrorMsg = "Please enter user ID or Password."
+        return
+      }
+      else{
+        this.staticErrorMsg = ""
+      }   
 
-            case "auth/user-disabled":
-                LoginComponent.errorMsg = "This email has been disabled";
-                break;
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let url = "http://localhost/webservice/public/api/login";
+        var body = {"username":this.userIdModel,"password":this.passwordModel}
+               
+        console.log(body);
 
-            case "auth/user-not-found":
-                LoginComponent.errorMsg = "There is no user corresponding to the given email";
-                break;
+        this.http
+        .post(url, body, {headers: headers})
+        .subscribe(
+          res   =>{ let result :any = res 
 
-            case "auth/wrong-password":
-                LoginComponent.errorMsg = "Wrong password";
-                break;
+            if (result.status == "success"){
+              let data = result.data
 
-            default:
-                LoginComponent.errorMsg = "Invalid login";
-                break;
-        }
+              localStorage.setItem("token",data.token)
+              localStorage.setItem("user_id",data.user_id)
+              localStorage.setItem("user_type",data.user_type)
 
-    });
-    */
-  }
+              let element: HTMLElement = document.getElementById('route');
+              if (result.user_type == 0){
+                this.router.navigate(['/homeAdmin']);
+              }
+              else {
+                this.router.navigate(['/home']);
+               }
+           
+
+            }
+            else{
+              this.staticErrorMsg = result.message
+
+            }
+          }
+          );
+      }
+
+      route(route:string){
+        this.router.navigate([route]);
+      }
+
+
+  
 }
