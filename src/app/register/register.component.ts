@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
 
-enum Gender{
+export enum Gender{
 	Female = 0,
 	Male = 1
 }

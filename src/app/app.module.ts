@@ -10,12 +10,14 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthGuard } from './auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgotPassword', component: ForgotPasswordComponent },
+  { path: 'editProfile', component: EditProfileComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
