@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
+import { LoginModule } from '../login.module'
+
 
 @Component({
   templateUrl: './login.component.html',
@@ -9,6 +11,9 @@ import { AppComponent } from '../../app.component';
 export class LoginComponent implements OnInit {
   title = 'Hostel Management System';
   static errorMsg;
+  userIdModel : string = '';
+  passwordModel : string = '';
+
 
   get staticErrorMsg() {
     return LoginComponent.errorMsg;
@@ -23,15 +28,15 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnInit() {
-  }
+  }  
 
-  @ViewChild('userid') txtUserId:ElementRef;
-  @ViewChild('password') txtPassword:ElementRef;
-
-  login() {
+  login() {       
+     this.title = `${this.userIdModel} 
+                ${this.passwordModel}`;
     /*
     this.auth.loginWithEmail(this.txtUserId.nativeElement.value, this.txtPassword.nativeElement.value).then(function(){
         LoginComponent.errorMsg = "";
+        localStorage.setItem("uid","1234")
         let element: HTMLElement = document.getElementById('route');
         element.click();
     }).catch(function(error) {

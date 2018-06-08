@@ -7,8 +7,8 @@
         <div class="errorMsg">
             {{ staticErrorMsg }}
         </div>
-        <p class="loginField"><i class="material-icons">account_circle</i><input type="email" name="userid" #userid placeholder="Enter login id"></p>
-        <p class="loginField"><i class="material-icons">lock</i><input #password name="password" type="password" placeholder="Enter password"></p>
+        <p class="loginField"><i class="material-icons">account_circle</i><input [(ngModel)]="userIdModel" type="email" name="userid" #userid placeholder="Enter login id"></p>
+        <p class="loginField"><i class="material-icons">lock</i><input [(ngModel)]="passwordModel" #password name="password" type="password" placeholder="Enter password"></p>
         <a id="btnLogin" title="Login" (click)="login()">Login</a>
         <a id="route" routerLink="/dashboard" routerLinkActive="active" style="visibility: hidden;">Admin</a>
         <p style="margin-bottom: 5px;">All Right Reserved © 2018</p>
