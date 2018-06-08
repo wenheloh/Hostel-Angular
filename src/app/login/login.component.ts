@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
-import { LoginModule } from '../login.module'
-
+import { AppComponent } from '../app.component';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   title = 'Hostel Management System';
   static errorMsg;
