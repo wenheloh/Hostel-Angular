@@ -86,4 +86,19 @@ a#btnLogin:hover, a#btnLogin:active {
     color: red;
     font-weight: bold;
     font-family: arial;
+    
+    padding-bottom:32px;
+}
+
+.successMsg {
+    font-size: medium;
+    color: green;
+    font-weight: bold;
+    font-family: arial;
+ 
+    padding-bottom:32px;
+}
+
+.hidden{
+    display: none;
 }

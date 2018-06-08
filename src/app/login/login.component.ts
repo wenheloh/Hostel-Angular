@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
             if (result.status == "success"){
               let data = result.data
 
+localStorage.setItem("password", this.passwordModel)
               localStorage.setItem("token",data.token)
               localStorage.setItem("user_id",data.user_id)
               localStorage.setItem("user_type",data.user_type)

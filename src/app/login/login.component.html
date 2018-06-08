@@ -7,7 +7,7 @@
         
         <p class="loginField"><input [(ngModel)]="userIdModel" type="email" name="userid" #userid placeholder="Enter login id"></p>
         <p class="loginField"><input [(ngModel)]="passwordModel" #password name="password" type="password" placeholder="Enter password"></p>
-        <div class="errorMsg">
+        <div class="errorMsg" [class.hidden]="staticErrorMsg==''">
             {{  staticErrorMsg }}
         </div>
         <p>

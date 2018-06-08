@@ -14,11 +14,11 @@ export class EditProfileComponent implements OnInit {
   constructor(private router: Router,
 	private http:HttpClient,) { 
   	this.errorMsg = ""
+  	this.successMsg = ""
+ 
   }
   	errorMsg;
-	userIdModel : string = '';
-	passwordModel : string = '';
-	cpasswordModel : string = '';
+  	successMsg;	
 	matricNoModel : string = '';
 	nameModel : string = '';
 	contactModel : string = '';
@@ -27,15 +27,53 @@ export class EditProfileComponent implements OnInit {
 	genderString = ["Female","Male"]
 
   ngOnInit() {
+	let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+	let url = "http://localhost/webservice/public/api/getProfile";
+	var body = {"token":localStorage.getItem("token")}
+
+	console.log(body);
+
+	this.http
+	.post(url, body, {headers: headers})
+	.subscribe(
+		res   =>{ let result :any = res 
+
+			if (result.status == "success"){
+				let data = result.data
+				this.matricNoModel = data.matric_no
+				this.selectedGender = data.gender
+				this.nameModel = data.name
+				this.contactModel = data.contact						
+			}
+			
+		}
+		);
+
+  }
+  validate(){
+  	this.errorMsg = ""
+  	this.successMsg = ""
+	var valid = true
+
+	if (
+		this.contactModel.length == 0 ||		
+		this.nameModel.length == 0 ||
+		this.contactModel.length == 0 
+		){
+			this.errorMsg = "Please fill in all fields."
+		valid = false
+	}
+		
+	if (valid){
+		 this.editProfile()
+	}
   }
 
-  register() {  	
+  editProfile() {  	
 
 	let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 	let url = "http://localhost/webservice/public/api/editProfile";
-	var body = {"username":this.userIdModel,
-	"password":this.passwordModel,
-	"matric_no":this.matricNoModel,
+	var body = {"token":localStorage.getItem("token"),	
 	"gender":this.selectedGender,
 	"name":this.nameModel,
 	"contact":this.contactModel}
@@ -47,21 +85,8 @@ export class EditProfileComponent implements OnInit {
 	.subscribe(
 		res   =>{ let result :any = res 
 
-			if (result.status == "success"){
-				let data = result.data
-
-				localStorage.setItem("token",data.token)
-				localStorage.setItem("user_id",data.user_id)
-				localStorage.setItem("user_type",data.user_type)
-
-				let element: HTMLElement = document.getElementById('route');
-				if (result.user_type == 0){
-					this.router.navigate(['/homeAdmin']);
-				}
-				else {
-					this.router.navigate(['/home']);
-				}
-
+			if (result.status == "success"){		
+				this.successMsg = result.message
 
 			}
 			else{

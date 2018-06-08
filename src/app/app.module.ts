@@ -8,16 +8,18 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AuthGuard } from './auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgotPassword', component: ForgotPasswordComponent },
-  { path: 'editProfile', component: EditProfileComponent },
+  { path: 'editProfile', component: EditProfileComponent },  
+  { path: 'changePassword', component: ChangePasswordComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     DashboardComponent,
     ForgotPasswordComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
