@@ -16,6 +16,7 @@ export enum Gender {
 
 
 export class RegisterComponent implements OnInit {
+
 	// title = 'Hostel Management System';
 	static errorMsg;
 	userIdModel: string = '';
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
 	ngOnInit() {
 	}
 
+
 	validate() {
 		this.staticErrorMsg = "";
 		var valid = true;
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit {
 			valid = false;
 		}
 
+
 		if (valid) {
 			this.register();
 		}
@@ -78,8 +81,10 @@ export class RegisterComponent implements OnInit {
 			contact: this.contactModel
 		}
 
+
 		this.hostelService.postData(params, "register").then((result) => {
 			let response: any = result;
+
 
 			if (response.status == "success") {
 				let data = response.data;
@@ -89,12 +94,14 @@ export class RegisterComponent implements OnInit {
 				localStorage.setItem("user_type", data.user_type)
 
 				let element: HTMLElement = document.getElementById('route');
+
 				if (data.user_type == "0") {
 					this.router.navigate(['/homeAdmin']);
 				}
 				else {
 					this.router.navigate(['/home']);
 				}
+
 			}
 			else {
 				this.staticErrorMsg = response.message;

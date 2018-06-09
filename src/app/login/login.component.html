@@ -4,7 +4,7 @@
         <h2 class ="loginTitle">
         {{ title }}
         </h2>
-        
+
         <p class="loginField"><input [(ngModel)]="userIdModel" type="email" name="userid" #userid placeholder="Enter login id"></p>
         <p class="loginField"><input [(ngModel)]="passwordModel" #password name="password" type="password" placeholder="Enter password"></p>
         <div class="errorMsg" [class.hidden]="staticErrorMsg==''">
@@ -17,7 +17,6 @@
     <p>
         <a class="register" (click)="route('forgotPassword')" >Forgot Password?</a>
     </p>
-       
-        <p style="margin-bottom: 5px;">All Right Reserved © 2018</p>
+
     </div>
 </div>
