@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Hostel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+  aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="allApplication ? 'active' : ''" (click)="toggleClass(1)">
+        <a class="nav-link">View All Applications</a>
+      </li>
+      <li class="nav-item" [ngClass]="allRoomType ? 'active' : ''" (click)="toggleClass(2)">
+        <a class="nav-link">View All Room Type</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

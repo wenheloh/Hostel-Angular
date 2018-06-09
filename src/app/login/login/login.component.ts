@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       private router: Router,
     ) {
         LoginComponent.errorMsg = "";
+        localStorage.clear();
         //this.auth.logout();
     }
 

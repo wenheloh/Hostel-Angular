@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+  <!-- #addForm="ngForm" (ngSubmit)="addRoomType(addForm)" -->
+  <div class="row" style="margin: auto;">
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label for="ipImage">Image:</label>
+        <img src="../../assets/img/no-image.png" title="Select new file at below to upload" alt="Select new file at below to upload"
+          style="width: 100%;" />
+        <input type="file" (change)="onFileChanged($event)" class="form-control-file" formControlName="image" name="image" />
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <label class="col-form-label" for="ipName">Name:</label>
+        <input type="text" class="form-control" placeholder="Room Type Name" formControlName="roomtype_name" name="roomtype_name"
+        />
+        <app-field-error-display [displayError]="isFieldValid('roomtype_name')" errorMsg="Please enter room type name">
+        </app-field-error-display>
+      </div>
+      <div class="form-group">
+        <label for="taDescription">Description:</label>
+        <textarea class="form-control" formControlName="description" placeholder="Description" name="description" rows="3"></textarea>
+        <app-field-error-display [displayError]="isFieldValid('description')" errorMsg="Please enter description">
+        </app-field-error-display>
+      </div>
+      <div class="form-group">
+        <label for="ipPrice">Price per day:</label>
+        <input type="number" class="form-control" placeholder="Price per day" formControlName="price" name="price" />
+        <app-field-error-display [displayError]="isFieldValid('price')" errorMsg="Please enter price">
+        </app-field-error-display>
+      </div>
+      <div class="form-group">
+        <label for="ipNumber">Available Number of Room:</label>
+        <input type="number" class="form-control" placeholder="Available number" formControlName="available_room_num" name="available_room_num"
+        />
+        <app-field-error-display [displayError]="isFieldValid('available_room_num')" errorMsg="Please enter available number of room">
+        </app-field-error-display>
+      </div>
+    </div>
+  </div>
+  <div class="container col-md-6">
+    <button class="btn btn-success" (click)="addRoomType()">Add</button>
+    <button class="btn btn-danger" routerLink="/RoomType" type="reset">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,24 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Available Number of Rooms</th>
+        <th scope="col">Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light">
+        <td colspan="4" style="text-align: center;" routerLink="/AddRoomType" title="Click to add new room type">Add New Room Type</td>
+      </tr>
+      <tr [ngClass]="currentRoomType.status == '0' ? 'table-active' : 'table-primary'"  class="table-primary" *ngFor="let currentRoomType of roomTypeList; let idx = index">
+        <th scope="row">{{ idx + 1 }}</th>
+        <td>{{ currentRoomType.roomtype_name }}</td>
+        <td>{{ currentRoomType.available_room_num }}</td>
+        <td> <button class="btn btn-success" [ngClass]="currentRoomType.status == '0' ? 'disabled' : ''" [attr.disabled]="currentRoomType.status == '0' ? 'disabled' : null" (click)="editRoom(idx)" title="Click to view & edit">Edit</button> <button class="btn btn-danger" [attr.disabled]="currentRoomType.status == '0' ? 'disabled' : null" [ngClass]="currentRoomType.status == '0' ? 'disabled' : ''" (click)="disableRoom(currentRoomType.roomtype_id, idx)" title="Disable this type of room">Disable</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
