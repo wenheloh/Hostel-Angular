@@ -5,7 +5,7 @@
     height: 100vh;
     transition: all 0.5s ease-in;
     background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');
-
+    background-size: cover;
 }
 
 .divLoginInner {
@@ -86,7 +86,7 @@ a#btnLogin:hover, a#btnLogin:active {
     color: red;
     font-weight: bold;
     font-family: arial;
-    
+
     padding-bottom:32px;
 }
 
@@ -95,7 +95,7 @@ a#btnLogin:hover, a#btnLogin:active {
     color: green;
     font-weight: bold;
     font-family: arial;
- 
+
     padding-bottom:32px;
 }
 

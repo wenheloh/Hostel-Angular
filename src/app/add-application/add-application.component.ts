@@ -12,16 +12,19 @@ export class AddApplicationComponent implements OnInit {
   selectedTypeID: number = 0;
 
   constructor(private router: Router, private hostelService: HostelService) {
-    
+
     this.hostelService.postData({"token" : localStorage.getItem("token")}, "getAllRoomTypes").then((result) => {
       let response: any = result;
-      
+
       if (response.status == "success"){
         this.roomTypes = response.data;
 
         this.roomTypes.forEach(function(type){
           if (type.image){
-            type.image = "./assets/img/" + type.image;
+            type.image = "http://localhost/webservice/uploads/" + type.image;
+          }
+          else {
+            type.image = "./assets/img/no-image.png";
           }
         });
       }
