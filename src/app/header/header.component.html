@@ -1,12 +1,11 @@
-<header class="mb-3">
-  <div [routerLink]="routerLink" routerLinkActive="active" id="headerLeft" title="Dashboard">
-    <img id="logo" alt="Logo" title="design by Freepik from Flaticon" width="30" class="mr-2"
-    src="https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop">
-    <h3>Hostel Management System</h3>
+<header class="mb-3" >
+  <div [routerLink]="routerLink" routerLinkActive="active" id="headerLeft" title="Home">
+        <h3>Hostel Management System</h3>
   </div>
   <!--<div id="headerTime" style="display: flex; align-items: baseline;"><i class="material-icons access_time">access_time</i><span id="spanMin">{{ minutesLeft }}</span><span> : </span><span id="spanSec">{{ secondsLeft }}</span></div>-->
   <!-- <a id="hypManagePhoneNo" (click)="openManagePhoneNoDialog()">Manage Phone No.</a> -->
-  <div id="headerRight">
-    <a id="btnLogout" title="Logout" (click)="logout()">Logout</a>
-  </div>
+  <ul id="menuRight">
+    <li title="Logout" (click)="editProfile()">Profile</li>
+    <li id="btnLogout" title="Logout" (click)="logout()">Logout</li>
+  </ul>
 </header>

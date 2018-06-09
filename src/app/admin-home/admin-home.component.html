@@ -1,11 +1,11 @@
-
+<app-header ></app-header>
 
 <div class="container">
   <!-- Content -->
   <div class="container row">
     <p style="font-size: 2em;">Applications</p>
-    <div *ngIf="displayBtn" style="margin: auto -30px auto auto;">
-      <a routerLink="/addApplication" class="btn btn-primary" style="margin-left: auto;">Book a room</a>
+    <div style="margin: auto -30px auto auto;">
+      <a routerLink="/RoomType" class="btn btn-primary" style="margin-left: auto;">Edit Room</a>
     </div>
   </div>
   <div *ngIf="!applications && applications.length == 0" class="jumbotron">

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     });
         
     this.successMsg = this.hostelService.getMessage();
-    console.log(this.successMsg);
+    
   }
 
   ngOnInit() {

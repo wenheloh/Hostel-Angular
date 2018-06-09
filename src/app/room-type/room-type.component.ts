@@ -52,7 +52,7 @@ export class RoomTypeComponent implements OnInit {
       new Promise((resolve, reject) => {
 
         let credential = {
-          'token': '2481a9eb342c1749dd4f1051386c3419',
+          'token': 'localStorage.getItem("token")',
           'roomtype_id': id
         };
 

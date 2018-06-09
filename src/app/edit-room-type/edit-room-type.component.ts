@@ -52,7 +52,7 @@ export class EditRoomTypeComponent implements OnInit {
 
       let postData = new FormData();
 
-      postData.append("token", "2481a9eb342c1749dd4f1051386c3419");
+      postData.append("token", localStorage.getItem("token"));
       postData.append("status", "1");
       postData.append("roomtype_id", roomtype_id);
       postData.append("roomtype_name", roomtype_name);

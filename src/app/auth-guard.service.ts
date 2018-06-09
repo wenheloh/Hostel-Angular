@@ -4,33 +4,77 @@ import { CanActivate, Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStat
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
+  
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
     let _url: string = "";
 
     state.url.split("/").forEach(element => {
-        if(_url==="")
-            if(element!=="")
-                _url=element;
-    });
-
-    /* Allow access without login
-    if(_url === "invitation")
-      return true;
-    */
+      if(_url==="")
+        if(element!==""){
+          _url=element;                
+        }
+      });  
 
     // Check authentication
-    return this.checkLogin();
+    return this.checkLogin(_url);
   }
+  checkLogin(url : String): boolean {
 
-  checkLogin(): boolean {
-    // huh? what is security?
-    if (localStorage.getItem('token')) { return true; }
+    if (
+      url == 'login'||
+      url == 'register'||
+      url == 'forgotPassword'||
+      url == ''
+      )
+    {
+      if (localStorage.getItem("token") == null){
+        return true
+      }
+      else{
+        if (localStorage.getItem("user_type") == "1"){
+          this.router.navigate(['/home'])
+        }
+        else{
+          this.router.navigate(['/homeAdmin'])
+        }
 
-    // If token not found, navigate to the login page
-    this.router.navigate(['/']);
 
-    return false;
+      }
+    }
+    else if (
+      url == 'homeAdmin'||
+      url == 'EditRoomType'||
+      url == 'AddRoomType'||
+      url == 'RoomType'
+      )
+    {
+      if (localStorage.getItem("token") == null){
+        this.router.navigate([''])
+        return false
+      }
+      else{
+        if (localStorage.getItem("user_type") == "1"){
+          this.router.navigate(['/home'])
+          return false
+        }
+        else{
+          return true
+        }
+
+
+      }
+    }
+    else {
+      if (localStorage.getItem("token") == null){
+        this.router.navigate([''])
+        return false
+      }
+      else{
+        return true
+              }
+    }
   }
+  
 }

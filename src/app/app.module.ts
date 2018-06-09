@@ -29,18 +29,18 @@ import { FieldErrorDisplayComponent } from '../components/field-error-display/fi
 
 
 const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'forgotPassword', component: ForgotPasswordComponent },
-  { path: 'editProfile', component: EditProfileComponent },
-  { path: 'changePassword', component: ChangePasswordComponent },
+  { path: '', component: LoginComponent ,canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent ,canActivate: [AuthGuard]},
+  { path: 'register', component: RegisterComponent ,canActivate: [AuthGuard]},
+  { path: 'forgotPassword', component: ForgotPasswordComponent ,canActivate: [AuthGuard]},
+  { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'changePassword', component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'addApplication', component: AddApplicationComponent, canActivate: [AuthGuard] },
-  { path: 'homeAdmin', component: AdminHomeComponent, canActivate: [AuthGuard] },
 
-  { path: 'RoomType', component: RoomTypeComponent, canActivate: [AuthGuard] },
-  { path: 'AddRoomType', component: AddRoomTypeComponent, canActivate: [AuthGuard] },
+  { path: 'homeAdmin', component: AdminHomeComponent, canActivate: [AuthGuard] },
+  { path: 'RoomType', component: RoomTypeComponent, canActivate: [AuthGuard]  },
+  { path: 'AddRoomType', component: AddRoomTypeComponent, canActivate: [AuthGuard]},
   { path: 'EditRoomType', component: EditRoomTypeComponent, data: {}, canActivate: [AuthGuard] },
 
 ];
