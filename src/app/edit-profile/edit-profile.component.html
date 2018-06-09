@@ -1,0 +1,49 @@
+<div class="divLoginOuter">
+  <div class="divLoginInner">
+    <h1>My Profile</h1>
+
+    <div class="form-group col-sm-9 ">
+      <label >Name</label>
+      <input type="email" [(ngModel)]="nameModel" class="form-control" >
+
+    </div>
+
+    <div class="form-group col-sm-9 ">
+      <label >Contact</label>
+      <input type="email" [(ngModel)]="contactModel" class="form-control" >
+
+    </div>
+
+    <div class="form-group col-sm-9">
+      <label >Matric No.</label>
+      <input disabled type="email" [(ngModel)]="matricModel" class="form-control" >
+
+    </div>
+    <div class="form-group col-sm-9">
+      <div class="row">
+        <label class="col-sm-3" >Gender</label>
+        <ul class="gender-list col-sm-9">
+          <li *ngFor="let gender of genders"
+          [class.selected]="gender == selectedGender"
+          (click)="onSelect(gender.valueOf())">{{genderString[gender]}}
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="errorMsg" [class.hidden]="errorMsg == ''">
+    {{  errorMsg }}
+  </div>
+
+    <div class="successMsg" [class.hidden]="successMsg == ''">
+      {{  successMsg }}
+    </div>
+    <div>
+    <div>
+
+      <a id="btnLogin"   (click)="validate()">Edit Profile</a>
+      <a id="btnLogin" (click)="route('changePassword')">Change Password</a>
+
+    </div>
+  </div>
+</div>

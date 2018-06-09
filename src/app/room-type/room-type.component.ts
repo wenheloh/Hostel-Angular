@@ -21,7 +21,7 @@ export class RoomTypeComponent implements OnInit {
   retrieveRoomType() {
     new Promise((resolve, reject) => {
 
-      let credential = {'token': '2481a9eb342c1749dd4f1051386c3419'};
+      let credential = {'token': localStorage.getItem("token")};
       let headers = new HttpHeaders({'Content-Type': 'application/json'});
       let url = this.apiURL + "api/getAllRoomTypes";
       let body = JSON.stringify(credential);

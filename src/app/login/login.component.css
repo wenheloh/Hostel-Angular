@@ -4,6 +4,8 @@
     justify-content: center;
     height: 100vh;
     transition: all 0.5s ease-in;
+    background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');
+    background-size: cover;
 }
 
 .divLoginInner {
@@ -11,18 +13,22 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
-    background: #f5f5f5;
+   /* box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);*/
+    background: #ffffffd1;
     padding: 30px;
     padding-bottom: 10px;
-    min-width: 490px;
+    min-width: 250px;
 }
 
 #loginLogo {
-    height: 64px;
-    width: 64px;
-    padding-bottom: 10px;
+   width: 100%;
 }
+
+.loginTitle{
+    color:#710030;
+    font-family : arial;
+}
+
 
 .loginField {
     display: flex;
@@ -45,19 +51,29 @@
     outline: none;
 }
 
+a.register{
+    color: #4e0625;
+    text-decoration: underline;
+
+}
+
 a#btnLogin, a#btnLogin:visited, a#btnLogin:link  {
-    display: block;
+        display: inline;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 120px;
-    height: 35px;
-    padding-top: 6px;
+    /* width: 120px; */
+    /* height: 35px; */
+    padding: 10px 20px;
+    border-radius: 4px;
     text-align: center;
-    color: #000;
+    color: white;
     text-decoration: none;
-    background: rgba(0,0,0,0.1);
+    background: rgb(187, 6, 83);
     margin: 15px;
     margin-bottom: 5px;
     cursor: pointer;
+    font-family: arial;
+    font-weight: bold;
 }
 
 a#btnLogin:hover, a#btnLogin:active {
@@ -65,9 +81,24 @@ a#btnLogin:hover, a#btnLogin:active {
     text-decoration: none;
 }
 
-#errorMsg {
-    font-size: 12px;
+.errorMsg {
+    font-size: medium;
     color: red;
-    font-style: italic;
-    margin: 5px;
+    font-weight: bold;
+    font-family: arial;
+
+    padding-bottom:32px;
+}
+
+.successMsg {
+    font-size: medium;
+    color: green;
+    font-weight: bold;
+    font-family: arial;
+
+    padding-bottom:32px;
+}
+
+.hidden{
+    display: none;
 }

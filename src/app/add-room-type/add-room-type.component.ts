@@ -59,6 +59,7 @@ export class AddRoomTypeComponent implements OnInit {
           );
       }).then((result) => {
         alert("Successfully added!");
+        localStorage.removeItem("currentRoomType");
         this.router.navigate(['/RoomType']);
       });
     } else {

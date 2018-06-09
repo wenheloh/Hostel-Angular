@@ -71,6 +71,7 @@ export class EditRoomTypeComponent implements OnInit {
         );
     }).then((result) => {
       alert("Successfully updated!");
+      localStorage.removeItem("currentRoomType");
       this.router.navigate(["/RoomType"]);
     });
     } else {
