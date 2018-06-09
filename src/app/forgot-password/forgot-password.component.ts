@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
-import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { RouterConfigLoader } from '@angular/router/src/router_config_loader';
+import { HostelService } from '../services/hostel.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,60 +11,47 @@ import { HttpClient, HttpHeaders} from '@angular/common/http'
 })
 export class ForgotPasswordComponent implements OnInit {
 
- 	errorMsg;
- 	successMsg;
-  userIdModel : string = '';
+  errorMsg;
+  successMsg;
+  userIdModel: string = '';
 
-get staticErrorMsg() {
+  get staticErrorMsg() {
     return this.errorMsg;
   }
 
   set staticErrorMsg(msg) {
     this.errorMsg = msg;
   }
-  constructor( private router: Router,
-      private http:HttpClient,) { 
-  	this.errorMsg = ""}
+  constructor(private router: Router, private hostelService: HostelService) {
+    this.errorMsg = "";
+  }
 
   ngOnInit() {
   }
 
-  resetPassword() {  
-  	 this.staticErrorMsg = ""
-        this.successMsg = ""
-      if( this.userIdModel == ""){
-        this.staticErrorMsg = "Please enter user ID."
-        return
+  resetPassword() {
+    this.staticErrorMsg = "";
+    this.successMsg = "";
+
+    if (this.userIdModel == "") {
+      this.staticErrorMsg = "Please enter user ID."
+      return;
+    }
+
+    this.hostelService.postData({ username: this.userIdModel }, "resetPassword").then((result) => {
+      let response: any = result;
+
+      if (response.status == "success"){
+        this.successMsg = response.message;
       }
-     
-
-       
-
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        let url = "http://localhost/webservice/public/api/resetPassword";
-        var body = {"username":this.userIdModel}
-               
-        console.log(body);
-
-        this.http
-        .post(url, body, {headers: headers})
-        .subscribe(
-          res   =>{ let result :any = res 
-
-            if (result.status == "success"){
-              let data = result.data            
-             this.successMsg = result.message
-           }
-            else{
-              this.staticErrorMsg = result.message
-
-            }
-          }
-          );
+      else {
+        this.staticErrorMsg = response.message;
       }
-route(route:string){
-        this.router.navigate([route]);
-      }
-      
+    });
+  }
+  route(route: string) {
+    this.router.navigate([route]);
+  }
+
 
 }

@@ -1,0 +1,8 @@
+.successMsg {
+    font-size: medium;
+    color: green;
+    font-weight: bold;
+    font-family: arial;
+ 
+    padding-bottom:32px;
+}
