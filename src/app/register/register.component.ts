@@ -28,7 +28,7 @@ selectedGender : number = 0;
 genders = [Gender.Female,Gender.Male]
 genderString = ["Female","Male"]
 
-  
+
 
 
 get staticErrorMsg() {
@@ -42,7 +42,7 @@ set staticErrorMsg(msg) {
 constructor(
 	private router: Router,
 	private http:HttpClient,
-	) { 
+	) {
 	RegisterComponent.errorMsg = "";
 }
 
@@ -60,7 +60,7 @@ validate(){
 		this.cpasswordModel.length == 0 ||
 		this.matricNoModel.length == 0 ||
 		this.nameModel.length == 0 ||
-		this.contactModel.length == 0 
+		this.contactModel.length == 0
 		){
 			this.staticErrorMsg = "Please fill in all fields."
 		valid = false
@@ -79,13 +79,13 @@ validate(){
 		valid = false
 	}
 	else if (
-				!this.userIdModel.match("[a-zA-Z]*") 
+				!this.userIdModel.match("[a-zA-Z]*")
 		){
 			this.staticErrorMsg = "Username cannot contain symbols or space."
 		valid = false
 	}
 	else if (
-		!this.matricNoModel.match("[a-zA-Z]*") 		
+		!this.matricNoModel.match("[a-zA-Z]*")
 		){
 			this.staticErrorMsg = "Matric No. cannot contain symbols or space."
 		valid = false
@@ -96,7 +96,7 @@ validate(){
 	}
 }
 
-register() {  	
+register() {
 
 	let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 	let url = "http://localhost/webservice/public/api/register";
@@ -112,7 +112,7 @@ register() {
 	this.http
 	.post(url, body, {headers: headers})
 	.subscribe(
-		res   =>{ let result :any = res 
+		res   =>{ let result :any = res
 
 			if (result.status == "success"){
 				let data = result.data
@@ -122,12 +122,9 @@ register() {
 				localStorage.setItem("user_type",data.user_type)
 
 				let element: HTMLElement = document.getElementById('route');
-				if (result.user_type == 0){
-					this.router.navigate(['/homeAdmin']);
-				}
-				else {
-					this.router.navigate(['/home']);
-				}
+
+				this.router.navigate(['/']);
+
 
 
 			}

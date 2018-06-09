@@ -15,9 +15,10 @@ export class AuthGuard implements CanActivate {
                 _url=element;
     });
 
-    // Allow access without login
+    /* Allow access without login
     if(_url === "invitation")
       return true;
+    */
 
     // Check authentication
     return this.checkLogin();
@@ -31,5 +32,7 @@ export class AuthGuard implements CanActivate {
     this.router.navigate(['/']);
 
     return false;
+   
+   return true;
   }
 }
