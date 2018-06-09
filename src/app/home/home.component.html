@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="container">
+  <!-- Content -->
+  <div *ngIf="successMsg && successMsg != ''" class="container alert alert-success alert-dismissible fade show" role="alert">
+    {{ successMsg }}
+  </div>
+  <div class="container row">
+    <p style="font-size: 2em;">Applications</p>
+    <div *ngIf="displayBtn" style="margin: auto -30px auto auto;">
+      <a routerLink="/addApplication" class="btn btn-primary" style="margin-left: auto;">Book a room</a>
+    </div>
+  </div>
+  <div *ngIf="!applications || applications.length == 0" class="jumbotron">
+    <h3 class="text-center text-muted">
+      No Application
+    </h3>
+  </div>
+  <table datatable *ngIf="applications && applications.length != 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Room Type</th>
+        <th>Date</th>
+        <th>Room Number</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let application of applications; index as i;">
+        <td>{{i + 1}}</td>
+        <td>{{application.roomtype_name}}</td>
+        <td>{{application.date}}</td>
+        <td>
+          <div *ngIf="application.assigned_room; else other_content">{{application.assigned_room}}</div>
+          <ng-template #other_content>-</ng-template>
+        </td>
+        <td [ngSwitch]="application.status">
+          <div *ngSwitchCase="0">
+            <span class="badge badge-pill">Pending</span>
+          </div>
+          <div *ngSwitchCase="1">
+            <span class="badge badge-pill badge-success">Approved</span>
+          </div>
+          <div *ngSwitchCase="2">
+            <span class="badge badge-pill badge-danger">Rejected</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End of Content -->
+</div>
+
+<app-footer></app-footer>

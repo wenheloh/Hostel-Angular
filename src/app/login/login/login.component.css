@@ -2,16 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /*height: 100vh;*/
+    height: 100vh;
     transition: all 0.5s ease-in;
-    /*background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');*/
-background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');
+
 }
 
 .divLoginInner {
-    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,9 +18,6 @@ background-position: center;
     padding: 30px;
     padding-bottom: 10px;
     min-width: 250px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
 }
 
 #loginLogo {
@@ -44,7 +38,6 @@ background-position: center;
     margin: 10px;
     box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
     border-radius: 30px;
-    width: 60%;
 }
 
 .loginField .material-icons {
@@ -61,7 +54,7 @@ background-position: center;
 a.register{
     color: #4e0625;
     text-decoration: underline;
-    
+    cursor: pointer;
 }
 
 a#btnLogin, a#btnLogin:visited, a#btnLogin:link  {
@@ -104,44 +97,6 @@ a#btnLogin:hover, a#btnLogin:active {
     font-family: arial;
  
     padding-bottom:32px;
-}
-
-ul.gender-list{   
- 
-    padding-left: 0;
-        text-align: center;
-
-}
-.gender-list li{
-
-     list-style: none;
-    display: inline-block;
-    width: 40%;
-    border: solid 1px #bb0653;    
-    background: white;
-    color: #bb0653;
-    font-family: arial;
-    padding: 5px;
-    font-weight: bold;
-}
-
-.gender-list li:first-child {
-    
-    border-right: 0px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-   
-}
-
-.gender-list li:last-child {  
-   
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;   
-}
-
-.gender-list li.selected{
-    background: #bb0653;
-    color: white;
 }
 
 .hidden{

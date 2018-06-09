@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="container">
+  <!-- Content -->
+  <div class="container">
+    <p>
+      Select room type.
+    </p>
+    <div class="row">
+      <div *ngFor="let type of roomTypes; index as i;" class="col-lg-6 col-xs-6 mb-2">
+        <div class="card card-default box-shadow form-control p-0" tabindex="1" (click)="selectType(i)">
+          <img *ngIf="type.image" class="card-img-top" [src]="type.image" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ type.roomtype_name }}</h5>
+            <p class="card-text">{{ type.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button *ngIf="selectedTypeID != 0 || (roomTypes && roomTypes.length == 1)" type="button" class="btn btn-primary" (click)="apply()">Apply</button>
+  </div>
+  <!-- End of Content -->
+</div>
+
+<app-footer></app-footer>

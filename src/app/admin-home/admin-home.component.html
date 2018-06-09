@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<div class="container">
+  <!-- Content -->
+  <div class="container row">
+    <p style="font-size: 2em;">Applications</p>
+    <div *ngIf="displayBtn" style="margin: auto -30px auto auto;">
+      <a routerLink="/addApplication" class="btn btn-primary" style="margin-left: auto;">Book a room</a>
+    </div>
+  </div>
+  <div *ngIf="!applications && applications.length == 0" class="jumbotron">
+    <h3 class="text-center text-muted">
+      No Application
+    </h3>
+  </div>
+  <table datatable *ngIf="applications && applications.length != 0" class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Room Type</th>
+        <th>Assigned Room</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let application of applications; index as i;">
+        <td>{{i + 1}}</td>
+        <td>{{application.name}}</td>
+        <td>{{application.date}}</td>
+        <td>{{application.roomtype_name}}</td>
+        <td>
+          <div *ngIf="application.assigned_room; else other_content">{{application.assigned_room}}</div>
+          <ng-template #other_content>-</ng-template>
+        </td>
+        <td [ngSwitch]="application.status">
+          <div *ngSwitchCase="0">
+            <button type="button" class="btn btn-success btn-sm" (click)="approve(application.application_id)">Approve</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="reject(application.application_id)">Reject</button>
+          </div>
+          <div *ngSwitchCase="1">
+            <span class="badge badge-pill badge-success">Approved</span>
+          </div>
+          <div *ngSwitchCase="2">
+            <span class="badge badge-pill badge-danger">Rejected</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End of Content -->
+</div>
+
+<app-footer></app-footer>
