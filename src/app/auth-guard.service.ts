@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
 
   checkLogin(): boolean {
     // huh? what is security?
-    if (localStorage.getItem('uid')) { return true; }
+    if (localStorage.getItem('token')) { return true; }
 
     // If token not found, navigate to the login page
     this.router.navigate(['/']);
