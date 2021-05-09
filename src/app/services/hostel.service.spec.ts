@@ -1,15 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from "@angular/core/testing";
 
-import { HostelService } from './hostel.service';
+import { HostelService } from "./hostel.service";
 
-describe('HostelService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [HostelService]
-    });
-  });
+describe("HostelService", () => {
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [HostelService]
+		});
+	});
 
-  it('should be created', inject([HostelService], (service: HostelService) => {
-    expect(service).toBeTruthy();
-  }));
+	it("should be created", inject([HostelService], (service: HostelService) => {
+		expect(service).toBeTruthy();
+	}));
 });

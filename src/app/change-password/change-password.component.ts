@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppComponent } from '../app.component';
-import { Gender } from '../register/register.component';
-import { HostelService } from '../services/hostel.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { HostelService } from "../services/hostel.service";
 
 @Component({
-	selector: 'app-change-password',
-	templateUrl: './change-password.component.html',
-	styleUrls: ['./change-password.component.css']
+	selector: "app-change-password",
+	templateUrl: "./change-password.component.html",
+	styleUrls: ["./change-password.component.css"]
 })
 export class ChangePasswordComponent implements OnInit {
 
@@ -18,9 +16,9 @@ export class ChangePasswordComponent implements OnInit {
 
 	errorMsg;
 	successMsg;
-	oldPasswordModel: string = '';
-	passwordModel: string = '';
-	cpasswordModel: string = '';
+	oldPasswordModel = "";
+	passwordModel = "";
+	cpasswordModel = "";
 
 	ngOnInit() {
 	}
@@ -28,17 +26,15 @@ export class ChangePasswordComponent implements OnInit {
 	validate() {
 		this.errorMsg = "";
 		this.successMsg = "";
-		var valid = true;
+		let valid = true;
 
 		if (this.passwordModel.length == 0 || this.cpasswordModel.length == 0) {
 			this.errorMsg = "Please fill in all fields.";
 			valid = false;
-		}
-		else if (this.passwordModel != this.cpasswordModel) {
+		} else if (this.passwordModel != this.cpasswordModel) {
 			this.errorMsg = "Password does not match";
 			valid = false;
-		}
-		else if (this.oldPasswordModel != localStorage.getItem("password")) {
+		} else if (this.oldPasswordModel != localStorage.getItem("password")) {
 			console.log(localStorage.getItem("password"));
 			valid = false;
 			this.errorMsg = "Wrong Password.";
@@ -50,27 +46,26 @@ export class ChangePasswordComponent implements OnInit {
 	}
 
 	changePassword() {
-		let params: any = {
+		const params: any = {
 			token: localStorage.getItem("token"),
 			password: this.cpasswordModel,
-		}
+		};
 
 		this.hostelService.postData(params, "changePassword").then((result) => {
-			let response: any = result;
+			const response: any = result;
 
-      		if (response.status == "success"){
+			if (response.status === "success") {
 				this.successMsg = response.message;
 				localStorage.setItem("password", this.cpasswordModel);
 				this.route("editProfile");
-			  }
-			  else{
+			} else {
 				this.errorMsg = response.message;
-			  }
+			}
 		});
 	}
 
 	route(route: string) {
-		this.router.navigate([route])
+		this.router.navigate([route]);
 	}
 
 }

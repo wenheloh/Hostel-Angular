@@ -1,57 +1,60 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class HostelService {
-  url;
-  msg;
+	url;
+	msg;
 
-  constructor(public http: HttpClient) {
-    this.url = 'http://localhost/webservice/public/api/';
-  }
+	constructor(public http: HttpClient) {
+		this.url = "http://localhost/webservice/public/api/";
+	}
 
-  getData(action){
+	getData(action) {
 
-    return new Promise((resolve, reject) =>{
-      let headers = new HttpHeaders();
-      let url = this.url + action;
+		return new Promise((resolve, reject) => {
+			const headers = new HttpHeaders();
+			const url = this.url + action;
 
-      this.http
-        .get(url, {headers: headers})
-        .subscribe(
-          res   =>{ resolve(res); }, 
-          (err) =>{ reject(err); } 
-        );
-    });
-  }
+			this.http
+				.get(url, {headers: headers})
+				.subscribe(
+					res => {
+						resolve(res);
+					},
+					(err) => {
+						reject(err);
+					}
+				);
+		});
+	}
 
-  postData(params, action){
+	postData(params, action) {
 
-    return new Promise((resolve, reject) =>{
-      
-      let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      let url = this.url + action;
-      let body = JSON.stringify(params);
+		return new Promise((resolve, reject) => {
 
-      this.http
-        .post(url, body, {headers: headers})
-        .subscribe(
-          res   =>{ resolve(res); }, 
-          (err) =>{ reject(err); } 
-        );
-    });
-  }
+			const headers = new HttpHeaders({"Content-Type": "application/json"});
+			const url = this.url + action;
+			const body = JSON.stringify(params);
 
-  setMessage(message){
-    this.msg = message;
-  }
+			this.http
+				.post(url, body, {headers: headers})
+				.subscribe(
+					res => {
+						resolve(res);
+					},
+					(err) => {
+						reject(err);
+					}
+				);
+		});
+	}
 
-  getMessage(){
-    return this.msg;
-  }
+	setMessage(message) {
+		this.msg = message;
+	}
 
-  ngOnInit(){
-    $(".alert.alert-success").show("slow").delay(3000).slideUp(200);
-  }
-
+	getMessage() {
+		return this.msg;
+	}
 }

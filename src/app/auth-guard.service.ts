@@ -1,80 +1,64 @@
-import { Injectable }  from '@angular/core';
-import { CanActivate, Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+
+enum WhitelistedDirectory {
+	LOGIN = "login",
+	REGISTER = "register",
+	FORGOT_PASSWORD = "forgot-password",
+	ROOT = ""
+}
+
+enum ProtectedDirectory {
+	ADMIN_HOME = "home-admin",
+	ADD_ROOM_TYPE = "add-room-type",
+	EDIT_ROOM_TYPE = "edit-room-type",
+	ROOM_TYPE = "room-type"
+}
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
-  
+	constructor(private router: Router) {
+	}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+	async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+		const url = state.url.split("/").reverse()[0];
 
-    let _url: string = "";
+		// Check authentication
+		return await this.checkLogin(url);
+	}
 
-    state.url.split("/").forEach(element => {
-      if(_url==="")
-        if(element!==""){
-          _url=element;                
-        }
-      });  
+	async checkLogin(url: string): Promise<boolean> {
+		switch (url) {
+			case WhitelistedDirectory.ROOT:
+			case WhitelistedDirectory.LOGIN:
+			case WhitelistedDirectory.REGISTER:
+			case WhitelistedDirectory.FORGOT_PASSWORD:
+				if (localStorage.getItem("token") === null) {
+					return true;
+				}
+				if (localStorage.getItem("user_type") === "1") {
+					return await this.router.navigate(["/home"]);
+				}
+				return await this.router.navigate(["/home-admin"]);
 
-    // Check authentication
-    return this.checkLogin(_url);
-  }
-  checkLogin(url : String): boolean {
+			case ProtectedDirectory.ADMIN_HOME:
+			case ProtectedDirectory.ROOM_TYPE:
+			case ProtectedDirectory.ADD_ROOM_TYPE:
+			case ProtectedDirectory.EDIT_ROOM_TYPE:
+				if (localStorage.getItem("token") === null) {
+					return await this.router.navigate([""]);
+				}
+				if (localStorage.getItem("user_type") === "1") {
+					return await this.router.navigate(["/home"]);
+				}
+				return true;
 
-    if (
-      url == 'login'||
-      url == 'register'||
-      url == 'forgotPassword'||
-      url == ''
-      )
-    {
-      if (localStorage.getItem("token") == null){
-        return true
-      }
-      else{
-        if (localStorage.getItem("user_type") == "1"){
-          this.router.navigate(['/home'])
-        }
-        else{
-          this.router.navigate(['/homeAdmin'])
-        }
-
-
-      }
-    }
-    else if (
-      url == 'homeAdmin'||
-      url == 'EditRoomType'||
-      url == 'AddRoomType'||
-      url == 'RoomType'
-      )
-    {
-      if (localStorage.getItem("token") == null){
-        this.router.navigate([''])
-        return false
-      }
-      else{
-        if (localStorage.getItem("user_type") == "1"){
-          this.router.navigate(['/home'])
-          return false
-        }
-        else{
-          return true
-        }
-
-
-      }
-    }
-    else {
-      if (localStorage.getItem("token") == null){
-        this.router.navigate([''])
-        return false
-      }
-      else{
-        return true
-              }
-    }
-  }
-  
+			default:
+				if (localStorage.getItem("token") === null) {
+					return await this.router.navigate([""]);
+				} else {
+					return true;
+				}
+		}
+	}
 }

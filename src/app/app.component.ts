@@ -1,13 +1,10 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FooterComponent } from '../components/footer/footer.component';
-import { HeaderComponent } from '../components/header/header.component';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: "app-root",
+	templateUrl: "./app.component.html",
+	styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'Hostel Management System';
+	title = "Hostel Management System";
 }
