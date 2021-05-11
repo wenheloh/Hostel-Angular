@@ -22,8 +22,6 @@ export class AuthGuard implements CanActivate {
 
 	async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
 		const url = state.url.split("/").reverse()[0];
-
-		// Check authentication
 		return await this.checkLogin(url);
 	}
 
