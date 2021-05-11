@@ -14,6 +14,18 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "module": "es2015",
+    "baseUrl": "./"
+  },
+  "rulesDirectory": [
+    "."
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    "rxjs-proper-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-collapse-imports": true
   }
 }
