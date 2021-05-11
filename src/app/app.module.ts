@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AuthGuard } from "./auth-guard.service";
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./login/login/login.component";
+import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 import { EditProfileComponent } from "./edit-profile/edit-profile.component";
