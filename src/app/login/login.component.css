@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    transition: all 0.5s ease-in;
     background: url('https://www.hostel.is/images/hostels/reykjavik-downtown/reykjavik_downtown_hi_hostel_iceland_24.jpg?960x640;crop');
     background-size: cover;
 }
@@ -13,36 +12,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-   /* box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);*/
     background: #ffffffd1;
-    padding: 30px;
-    padding-bottom: 10px;
+    padding: 30px 30px 10px;
     min-width: 250px;
 }
 
-#loginLogo {
-   width: 100%;
-}
-
-.loginTitle{
+.loginTitle {
     color: #710030;
     font-family: Arial, serif;
 }
-
 
 .loginField {
     display: flex;
     align-items: center;
     background: white;
-    padding: 10px 8px;
-    margin: 10px;
+    padding: 8px 6px;
+    margin: 8px;
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
     border-radius: 30px;
-}
-
-.loginField .material-icons {
-    color: #292929;
-    padding: 4px;
 }
 
 .loginField input {
@@ -51,28 +38,27 @@
     outline: none;
 }
 
-a.register{
+a.register {
     color: #4e0625;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.divLoginRegister {
+    margin: 10px 0;
 }
 
 a#btnLogin, a#btnLogin:visited, a#btnLogin:link  {
     display: inline;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    /* width: 120px; */
-    /* height: 35px; */
     padding: 10px 20px;
     border-radius: 4px;
     text-align: center;
     color: white;
     text-decoration: none;
     background: rgb(187, 6, 83);
-    margin: 15px;
-    margin-bottom: 5px;
     cursor: pointer;
-    font-family: Arial serif;
     font-weight: bold;
 }
 

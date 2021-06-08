@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Gender } from "../register/register.component";
-import { HostelService } from "../services/hostel.service";
+import { HostelService } from "../../services/hostel.service";
 
 @Component({
 	selector: "app-edit-profile",

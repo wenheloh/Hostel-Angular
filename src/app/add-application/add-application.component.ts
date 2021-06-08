@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { HostelService } from "../services/hostel.service";
+import { HostelService } from "../../services/hostel.service";
 
 @Component({
 	selector: "app-add-application",
@@ -16,7 +16,7 @@ export class AddApplicationComponent implements OnInit {
 		this.hostelService.postData({"token": localStorage.getItem("token")}, "getAllRoomTypes").then((result) => {
 			const response: any = result;
 
-			if (response.status == "success") {
+			if (response.status === "success") {
 				this.roomTypes = response.data;
 
 				this.roomTypes.forEach(function (type) {
@@ -38,7 +38,7 @@ export class AddApplicationComponent implements OnInit {
 	}
 
 	apply() {
-		if (this.roomTypes.length == 1) {
+		if (this.roomTypes.length === 1) {
 			this.selectedTypeID = this.roomTypes[0].roomtype_id;
 		}
 
@@ -50,7 +50,7 @@ export class AddApplicationComponent implements OnInit {
 		this.hostelService.postData(params, "addApplication").then((result) => {
 			const response: any = result;
 
-			if (response.status == "success") {
+			if (response.status === "success") {
 				this.router.navigate(["home"]);
 				this.hostelService.setMessage("Apply successfully.");
 			} else {

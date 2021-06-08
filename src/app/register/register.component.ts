@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { HostelService } from "../services/hostel.service";
+import { HostelService } from "../../services/hostel.service";
 
 export enum Gender {
 	Female = 0,
@@ -89,8 +89,6 @@ export class RegisterComponent implements OnInit {
 				localStorage.setItem("token", data.token);
 				localStorage.setItem("user_id", data.user_id);
 				localStorage.setItem("user_type", data.user_type);
-
-				const element: HTMLElement = document.getElementById("route");
 
 				if (data.user_type === "0") {
 					this.router.navigate(["/homeAdmin"]);

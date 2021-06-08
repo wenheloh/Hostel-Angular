@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { HostelService } from "../services/hostel.service";
+import { HostelService } from "../../services/hostel.service";
 
 @Component({
 	selector: "app-change-password",
@@ -28,13 +28,13 @@ export class ChangePasswordComponent implements OnInit {
 		this.successMsg = "";
 		let valid = true;
 
-		if (this.passwordModel.length == 0 || this.cpasswordModel.length == 0) {
+		if (this.passwordModel.length === 0 || this.cpasswordModel.length === 0) {
 			this.errorMsg = "Please fill in all fields.";
 			valid = false;
-		} else if (this.passwordModel != this.cpasswordModel) {
+		} else if (this.passwordModel !== this.cpasswordModel) {
 			this.errorMsg = "Password does not match";
 			valid = false;
-		} else if (this.oldPasswordModel != localStorage.getItem("password")) {
+		} else if (this.oldPasswordModel !== localStorage.getItem("password")) {
 			console.log(localStorage.getItem("password"));
 			valid = false;
 			this.errorMsg = "Wrong Password.";

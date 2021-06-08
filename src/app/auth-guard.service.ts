@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, Router } from "@angular/router";
 
-enum WhitelistedDirectory {
-	LOGIN = "login",
-	REGISTER = "register",
-	FORGOT_PASSWORD = "forgot-password",
-	ROOT = ""
+export enum WhitelistedDirectory {
+	LOGIN = "/login",
+	REGISTER = "/register",
+	FORGOT_PASSWORD = "/forgot-password",
+	ROOT = "/"
 }
 
 enum ProtectedDirectory {
@@ -20,8 +20,9 @@ export class AuthGuard implements CanActivate {
 	constructor(private router: Router) {
 	}
 
-	async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-		const url = state.url.split("/").reverse()[0];
+	async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
+		const url = window.location.pathname;
+		// return true;
 		return await this.checkLogin(url);
 	}
 

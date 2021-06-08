@@ -8,11 +8,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 
 export class LoginComponent implements OnInit {
-	title = "Hostel Management System";
 	static errorMsg;
+	title = "Hostel Management System";
 	userIdModel = "";
 	passwordModel = "";
-
 
 	get staticErrorMsg() {
 		return LoginComponent.errorMsg;
@@ -45,12 +44,10 @@ export class LoginComponent implements OnInit {
 		const url = "http://localhost/webservice/public/api/login";
 		const body = {"username": this.userIdModel, "password": this.passwordModel};
 
-		console.log(body);
-
 		this.http
 			.post(url, body, {headers: headers})
 			.subscribe(
-				res => {
+				async (res) => {
 					const result: any = res;
 
 					if (result.status === "success") {
@@ -61,25 +58,19 @@ export class LoginComponent implements OnInit {
 						localStorage.setItem("user_id", data.user_id);
 						localStorage.setItem("user_type", data.user_type);
 
-						const element: HTMLElement = document.getElementById("route");
 						if (data.user_type === "0") {
-							this.router.navigate(["/homeAdmin"]);
+							await this.router.navigate(["/homeAdmin"]);
 						} else {
-							this.router.navigate(["/home"]);
+							await this.router.navigate(["/home"]);
 						}
-
-
 					} else {
 						this.staticErrorMsg = result.message;
-
 					}
 				}
 			);
 	}
 
-	route(route: string) {
-		this.router.navigate([route]);
+	async route(route: string) {
+		await this.router.navigate([route]);
 	}
-
-
 }

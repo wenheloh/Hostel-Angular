@@ -1,4 +1,3 @@
-
 header {
     width: 100%;
     overflow: hidden;
@@ -8,7 +7,6 @@ header {
     padding: 10px 25px;
     display: flex;
     justify-content: space-between;
-    
 }
 
 #headerLeft {
@@ -21,22 +19,20 @@ header {
 
 #headerLeft h3 {
     display: inline;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 ul#menuRight {
     list-style-type: none;
     vertical-align: middle;
-
     margin: auto 0;
 }
 
 li{
     font-weight: bold;
-        display: inline;
-            padding: 15px;
+    display: inline;
+    padding: 15px;
 }
-
 
 .hidden{
     display:none;

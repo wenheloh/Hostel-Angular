@@ -10,8 +10,7 @@ export class HostelService {
 		this.url = "http://localhost/webservice/public/api/";
 	}
 
-	getData(action) {
-
+	getData(action): Promise<any> {
 		return new Promise((resolve, reject) => {
 			const headers = new HttpHeaders();
 			const url = this.url + action;
@@ -29,10 +28,8 @@ export class HostelService {
 		});
 	}
 
-	postData(params, action) {
-
+	postData(params, action): Promise<any> {
 		return new Promise((resolve, reject) => {
-
 			const headers = new HttpHeaders({"Content-Type": "application/json"});
 			const url = this.url + action;
 			const body = JSON.stringify(params);

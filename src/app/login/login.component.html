@@ -1,6 +1,6 @@
 <div class="divLoginOuter">
     <div class="divLoginInner">
-        <img id="loginLogo" alt="Logo" title="design by Freepik from Flaticon" src="http://www.utm.my/wp-content/uploads/2017/04/UTMlogo2017.png">
+<!--        <img id="loginLogo" alt="Logo" title="design by Freepik from Flaticon" src="http://www.utm.my/wp-content/uploads/2017/04/UTMlogo2017.png">-->
         <h2 class ="loginTitle">
         {{ title }}
         </h2>
@@ -10,10 +10,9 @@
         <div class="errorMsg" [class.hidden]="staticErrorMsg==''">
             {{  staticErrorMsg }}
         </div>
-        <p>
-        <a id="btnLogin" title="Login" (click)="login()">Login</a> or <a class="register" (click)="route('register')" >Register here</a>
-    </p>
-
+        <div class="divLoginRegister">
+            <a id="btnLogin" title="Login" (click)="login()">Login</a> or <a class="register" (click)="route('register')" >Register here</a>
+        </div>
     <p>
         <a class="register" (click)="route('forgotPassword')" >Forgot Password?</a>
     </p>

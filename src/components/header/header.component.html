@@ -1,0 +1,10 @@
+<header *ngIf="show" class="mb-3" >
+  <div [routerLink]="routerLink" routerLinkActive="active" id="headerLeft" title="Home">
+        <h3>Hostel Management System</h3>
+  </div>
+  <i class="material-icons access_time">access_time</i>
+  <ul id="menuRight">
+    <li title="Logout" (click)="editProfile()">Profile</li>
+    <li id="btnLogout" title="Logout" (click)="logout()">Logout</li>
+  </ul>
+</header>
