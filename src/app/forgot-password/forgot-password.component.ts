@@ -9,6 +9,7 @@ import { HostelService } from "../../services/hostel.service";
 })
 export class ForgotPasswordComponent implements OnInit {
 
+	title = "Forgot password";
 	errorMsg;
 	successMsg;
 	userIdModel = "";
